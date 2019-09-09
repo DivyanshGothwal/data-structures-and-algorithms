@@ -1,16 +1,22 @@
 
 import java.util.*;
 
-public class LinkedListCreation {
+public class LinkedListAddition {
 
 	public static void main(String[] args) {
+
+		// scanner class to take input from user
 		Scanner sc = new Scanner(System.in);
+		// number of element to be inserted
 		int n = sc.nextInt();
 		LinkedList head = null;
 		for (int i = 0; i < n; i++) {
+			// element to be inserted
 			int element = sc.nextInt();
+			// Always inserting at the end of the list
 			head = insertAtEnd(element, head);
 		}
+		// print linked list to console.
 		printLinkedList(head);
 		sc.close();
 	}
@@ -24,15 +30,19 @@ public class LinkedListCreation {
 	}
 
 	private static LinkedList insertAtEnd(int element, LinkedList head) {
+		// checking if head is present if not then return one node;
 		if (head == null) {
 			return new LinkedList(element);
 		}
 		LinkedList temp = head;
 
+		// traversing till the end of the list then adding element last to it
 		while (temp.next != null) {
 			temp = temp.next;
 		}
 		temp.next = new LinkedList(element);
+
+		// always returning head node
 		return head;
 
 	}
