@@ -11,7 +11,7 @@ public class LinkedListAddition {
 		int n = sc.nextInt();
 		System.out.println("Please type 0 for isert at end and 1 for isert at head");
 		int isInsertAtHead = sc.nextInt();
-		LinkedList head = null;
+		LL head = null;
 		for (int i = 0; i < n; i++) {
 			// element to be inserted
 			int element = sc.nextInt();
@@ -19,17 +19,17 @@ public class LinkedListAddition {
 			head = isInsertAtHead == 1 ? insertAtHead(element, head) : insertAtEnd(element, head);
 		}
 		// print linked list to console.
-		printLinkedList(head);
+		printLL(head);
 		sc.close();
 	}
 
-	private static LinkedList insertAtHead(int element, LinkedList head) {
-		LinkedList newNode = new LinkedList(element);
+	private static LL insertAtHead(int element, LL head) {
+		LL newNode = new LL(element);
 		// checking if head is present if not then return one node;
 		if (head == null) {
 			return newNode;
 		}
-		LinkedList temp = head;
+		LL temp = head;
 		// update head of the linked list.
 		head = newNode;
 		newNode.next = temp;
@@ -37,21 +37,21 @@ public class LinkedListAddition {
 		return head;
 	}
 
-	private static void printLinkedList(LinkedList head) {
-		LinkedList temp = head;
+	private static void printLL(LL head) {
+		LL temp = head;
 		while (temp != null) {
 			System.out.println(temp.data);
 			temp = temp.next;
 		}
 	}
 
-	private static LinkedList insertAtEnd(int element, LinkedList head) {
-		LinkedList newNode = new LinkedList(element);
+	private static LL insertAtEnd(int element, LL head) {
+		LL newNode = new LL(element);
 		// checking if head is present if not then return one node;
 		if (head == null) {
 			return newNode;
 		}
-		LinkedList temp = head;
+		LL temp = head;
 
 		// traversing till the end of the list then adding element last to it
 		while (temp.next != null) {
@@ -66,11 +66,11 @@ public class LinkedListAddition {
 
 }
 
-class LinkedList {
+class LL {
 	int data;
-	LinkedList next;
+	LL next;
 
-	LinkedList(int data) {
+	LL(int data) {
 		this.data = data;
 		this.next = null;
 	}
