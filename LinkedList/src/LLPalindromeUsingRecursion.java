@@ -34,6 +34,8 @@ public class LLPalindromeUsingRecursion {
 		}
 	}
 
+	// time complexity O(n);
+	// space complexity O(1) excluding call stack space
 	private static boolean isPalindrome(LL temp) {
 		if (temp != null) {
 			boolean isPalindrome = isPalindrome(temp.next);
