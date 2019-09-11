@@ -55,12 +55,3 @@ public class LLAdditionAtGivenPoint {
 		return head;
 	}
 }
-
-class LL {
-	int data;
-	LL next;
-
-	LL(int data) {
-		this.data = data;
-	}
-}
