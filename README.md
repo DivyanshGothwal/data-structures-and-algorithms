@@ -7,3 +7,4 @@ This repo covers all DS and famous algorithms in JAVA
 2) LL deletion
 3) LL insertion at a given position
 4) Checking for Plaindromic LL using recursion.
+5) Removal of duplicates from unsorted LL
