@@ -3,6 +3,8 @@ package src;
 import java.util.Arrays;
 import java.util.List;
 
+// problem explained: https://www.geeksforgeeks.org/split-the-given-array-into-k-sub-arrays-such-that-maximum-sum-of-all-sub-arrays-is-minimum/
+
 public class MinimumOfMaximumSumSubArray {
 	public static void main(String ar[]) {
 		List<Integer> a = Arrays.asList(1, 1, 1, 15, 4, 16);
