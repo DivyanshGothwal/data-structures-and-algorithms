@@ -38,17 +38,6 @@ public class ForegoneSolution {
 		a[1] = newS;
 		return a;
 	}
-
-	private static boolean is4Present(long n) {
-		while (n != 0) {
-			long modulo = n % 10;
-			if (modulo == 4) {
-				return true;
-			}
-			n = n / 10;
-		}
-		return false;
-	}
 }
 
 
