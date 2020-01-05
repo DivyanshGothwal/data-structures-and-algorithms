@@ -1,5 +1,5 @@
 package src;
-import java.util.*;
+//import java.util.*;
 
 public class SparseTableForMinimum {
 	public static void main(String ar[]) {
