@@ -1,0 +1,80 @@
+DP with BitMasking is technique to improve the way we store the state of DP or sometimes improve the performance of a normal DP.
+
+example :- 
+There are N persons and M tasks, each task is to be alloted to a single person. We are also given a matrix cost of size N*N, 
+where cost[i][j] denotes, how much person i is going to charge for task j. Now we need to assign each task to a person in such a way that 
+the total cost is minimum. Note that each task is to be alloted to a single person, and each person will be alloted only one task.
+
+Constraints
+1<N<=10
+1<M<=100
+
+BRUTE FORCE:-
+
+1) brute force way is that
+  1st person can be assigned 100 tasks.
+  2nd person can be assigned 99 tasks
+  .
+  .
+  .
+  .
+  and so on till n
+  nth person can be assigned only one task.
+  
+  
+  total time complexity will be   N*(N-1)*(N-2)*......1 i.e O(N!)  ----> which is very large will give TLE.
+  
+2) Using normal DP
+
+	solution has overlapping sub-problems how? (check below)
+	    
+	      
+	      
+
+1st person can be assigned->	    		1st T          				    		  2nd T    										3rd T   											4th T           						
+	                                 		|              								|									  		|													  |
+                                     		|     										|									  		|													  |	
+	                                 		|											|									  		|													  |
+	                                 		|											|									  		|													  |
+2nd person can be assigned-> 	2nd   or     3rd   or    4th      			  1st    or  3rd       or  4th     			1st    or      2nd    or     4th						1st    or    2nd   or     3rd 
+								|             |			  |						|		   |			|			 	|			 	|			  |							|			  |				|
+								|			  |			  |						|		   |			|			 	|			 	|			  |							|			  |				|
+								|			  |			  |						|		   |			|			 	|			 	|			  |							|			  |				|
+3RD person can be assigned->    3rd or 4th   2nd or 4th   2nd or 3rd		3rd or 4th    1st or 4th   1st or 3rd   	(this branch  (this branch   1st or 2nd					(this branch  (this branch  (this branch
+																														is already     is already 								is already    is already     is already
+																														computed)       computed)								computed)     computed)      computed)
+
+
+
+
+This seems to look like as complexity of O(M!) comes down to O(M^2)
+but there is a catch "How to store the state of this DP" and "Is complexity really came down to O(M^2)"
+
+Here state is "SUBSET of T-Shirt, number of persons" 
+Complexity for this problem is O(2^M * n) which comes to in worst case 2^100 *10 --> pretty bad and gives TLE
+
+
+Now catch is to do apposite of above as our constraints are number of T-Shirt is <=100 and number of person are <10
+so if we do apposite our DP state becomes the following
+
+Here state is "number of T-Shirts, SUBSET of persons" which comes out to be O(2^n*M)
+so in worst case it becomes 2^10*100 ~ 10^5(now it can be solved) in given time
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        

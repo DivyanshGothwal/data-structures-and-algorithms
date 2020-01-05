@@ -4,8 +4,8 @@ import java.util.*;
 
 public class EulerTotientFunction {
 	public static void main(String a[]) {
-		int n = 24;
-		
+		int n = 14;
+		Arrays.stream(a);
 		findRelativelyPrime(n);
 	}
 

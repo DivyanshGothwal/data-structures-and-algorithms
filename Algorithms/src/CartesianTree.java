@@ -29,7 +29,6 @@ public class CartesianTree {
 					prevTop = top;
 				}
 				temp.left = prevTop;
-//				System.out.println(top.index+" "+top.data);
 			}
 			else {
 				top.right = temp;
