@@ -11,18 +11,18 @@ public class CartesianTree {
 		for(int i=0;i<n;i++) {
 			a[i] = sc.nextInt();
 		}
-		buildTree(a);
+		buildCustomTree(a);
 		sc.close();
 	}
-	public static void buildTree(int [] a) {
-		Stack<tree> st = new Stack<>();
-		st.push(new tree(0,a[0],null,null));
-		tree root = new tree(0,a[0],null,null);
+	public static void buildCustomTree(int [] a) {
+		Stack<CustomTree> st = new Stack<>();
+		st.push(new CustomTree(0,a[0],null,null));
+		CustomTree root = new CustomTree(0,a[0],null,null);
 		for(int i=1;i<a.length;i++) {
-			tree temp = new tree(i,a[i], null, null);
-			tree top = st.peek();
+			CustomTree temp = new CustomTree(i,a[i], null, null);
+			CustomTree top = st.peek();
 			if(a[top.index]>=a[i]) {
-				tree prevTop = st.peek();
+				CustomTree prevTop = st.peek();
 				while(a[top.index]>a[i] && !st.isEmpty()) {
 					top = st.peek();
 					st.pop();
@@ -35,7 +35,7 @@ public class CartesianTree {
 			}
 			st.push(temp);
 		}
-		tree prevEle = null;
+		CustomTree prevEle = null;
 		while(!st.isEmpty()) {
 			prevEle = st.peek();
 			st.pop();
@@ -45,7 +45,7 @@ public class CartesianTree {
 		}
 		printInorder(root);
 	}
-	public static void printInorder(tree root) {
+	public static void printInorder(CustomTree root) {
 		if(root==null) {
 			return;
 		}
@@ -55,12 +55,12 @@ public class CartesianTree {
 	}
 }
 
-class tree{
+class CustomTree{
 	int index;
 	int data;
-	tree left;
-	tree right;
-	tree(int index, int data, tree left, tree right){
+	CustomTree left;
+	CustomTree right;
+	CustomTree(int index, int data, CustomTree left, CustomTree right){
 		this.index = index;
 		this.data = data;
 		this.left = left;
