@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PopulateInorderSuccessor {
-	public static TreeCustom succ;
+	public static TreeCustom succ=null;
 	public static void main(String[] args) {
 		TreeCustom root = new TreeCustom(9);
 		root.left = new TreeCustom(18);
@@ -50,6 +50,7 @@ class TreeCustom {
 	TreeCustom left;
 	TreeCustom right;
 	TreeCustom next;
+	TreeCustom prev;
 
 	TreeCustom(int data, TreeCustom left, TreeCustom right) {
 		this.data = data;
@@ -61,5 +62,7 @@ class TreeCustom {
 		this.data = data;
 		this.left = null;
 		this.right = null;
+		this.next = null;
+		this.prev = null;
 	}
 }
