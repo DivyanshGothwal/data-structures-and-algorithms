@@ -18,19 +18,21 @@ public class LevelOrderTraversal {
 		root.right.right.left = new Tree(10);
 		levelOrder(root);
 	}
-	static void levelOrder(Tree Tree) {
-        Queue<Tree> q = new LinkedList<Tree>();
-        q.add(Tree);
-        while(!q.isEmpty()){
-            Tree peek = q.peek();
-            System.out.print(peek.data+" ");
-            q.remove();
-            if(peek.left!=null){
-                q.add(peek.left);
-            }
-            if(peek.right!=null){
-                q.add(peek.right);
-            }
-        }
-    }
+
+	static void levelOrder(Tree root) {
+		Queue<Tree> q = new LinkedList<>();
+		q.add(root);
+		while (!q.isEmpty()) {
+			Tree k = q.remove();
+			if (k != null) {
+				if (k.left != null) {
+					q.add(k.left);
+				}
+				if (k.right != null) {
+					q.add(k.right);
+				}
+				System.out.println(k.data);
+			}
+		}
+	}
 }
