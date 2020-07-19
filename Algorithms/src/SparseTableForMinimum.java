@@ -1,50 +1,61 @@
 package src;
 //import java.util.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SparseTableForMinimum {
 	public static void main(String ar[]) {
-		int arr[]   = {7, 2, 3, 5, 10, 3, 12, 18, 3 };		
-		int [][]table = createTable(arr);
-		System.out.println(query(3, 4, table));
-		System.out.println(query(1, 6, table));
-		System.out.println(query(7, 7, table));
+		int arr[] = { 7, 2, 3, 5, 10, 4, 12, 18, 2 };
+		int[][] table1 = createNewTable(arr);
+
+		System.out.println(query1(3, 4, table1, arr));
+		System.out.println(query1(2, 7, table1, arr));
 	}
-	public static int query(int start, int end, int [][] table) {
-		int length = end-start+1;
-		int index = log2(length);
-		if(length%2==0) {
-			return (table[index][start]);
+
+	private static int query1(int i, int j, int[][] table1, int[] arr) {
+		int size = j - i + 1;
+		int count = 0;
+		List<Integer> a = new ArrayList<>();
+		while (size > 0) {
+			count++;
+			int mod = size % 2;
+			a.add(mod);
+			size = size / 2;
 		}
-		return Math.min(table[index][start], table[index][start+index]);
-	}
-	public static int log2(int x){
-	    return (int) (Math.log(x) / Math.log(2));
-	}
-	public static int[][] createTable(int a[]) {
-		int n = a.length;
-		int table[][] = new int[n+1][n+1];
-		for(int k=0;k<n;k++) {
-			table[0][k] = a[k];
-		}
-		int i=1;
-		int j=1<<i;
-		while(j<=n) {
-			int k = j/2;
-			int l = 0;
-			while(k<n) {
-				table[i][l] = Math.min(table[i-1][l],table[i-1][k]);
-				l++;
-				k++;
+		int currMin = Integer.MAX_VALUE;
+		int nextIndex = i;
+		for (int p = count - 1; p >= 0; p--) {
+			if (a.get(p) == 1) {
+				int o = 1 << p;
+				currMin = Math.min(currMin, arr[table1[nextIndex][log2(o)]]);
+				nextIndex = nextIndex + o;
 			}
-			i++;
-			j=1<<i;
 		}
-		for(i=0;i<n;i++) {
-			for(j=0;j<n;j++) {
-				System.out.print(table[i][j]+" ");
+		return currMin;
+	}
+
+	private static int[][] createNewTable(int[] arr) {
+		int n = arr.length;
+		int[][] table = new int[n + 1][log2(n) + 1];
+		for (int i = 0; i < n; i++) {
+			table[i][0] = i;
+		}
+		System.out.println(log2(n) + " " + (1 << 3));
+		for (int j = 1; j <= log2(n); j++) {
+			int size = 1 << j;
+			for (int i = 0; i < n; i++) {
+				int indexToTake = i + (size / 2);
+				if (indexToTake < n && i + size <= n) {
+					table[i][j] = arr[table[i][j - 1]] > arr[table[indexToTake][j - 1]] ? table[indexToTake][j - 1]
+							: table[i][j - 1];
+				}
 			}
-			System.out.println();
 		}
 		return table;
+	}
+
+	public static int log2(int x) {
+		return (int) (Math.log(x) / Math.log(2));
 	}
 }
