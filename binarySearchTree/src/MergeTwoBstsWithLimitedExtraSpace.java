@@ -5,8 +5,8 @@ import java.util.Stack;
 public class MergeTwoBstsWithLimitedExtraSpace {
 
 	public static void main(String[] args) {
-		Tree bst = new Tree(5);
-//		bst.left = new Tree(2);
+		Tree bst = new Tree(12);
+//		bst.left = new Tree(8);
 //		bst.left.left = new Tree(1);
 //		bst.left.right = new Tree(7);
 //
