@@ -15,6 +15,7 @@ public class MinHeap {
 		insertMinHeap(5);
 		insertMinHeap(4);
 		insertMinHeap(45);
+		extractMin();
 		System.out.println(minHeap);
 	}
 
@@ -26,12 +27,14 @@ public class MinHeap {
 	}
 
 	public static Integer extractMin() {
-		Integer root = minHeap.get(0);
+		Integer min = minHeap.get(0);
 		Integer lastEle = minHeap.get(minHeap.size() - 1);
-		minHeap.set(0, lastEle);
-		minHeap.set(minHeap.size() - 1, root);
-		heapify(minHeap.size() - 1);
-		return root;
+		minHeap.remove(minHeap.size() - 1);
+		if (minHeap.size() != 0) {
+			minHeap.set(0, lastEle);
+			downHeapify(0);
+		}
+		return min;
 	}
 
 	public static void changeKey(Integer index, Integer newValue) {
@@ -56,6 +59,30 @@ public class MinHeap {
 			}
 			currentIndex = parentIndex;
 			parentIndex = (parentIndex - 1) / 2;
+		}
+	}
+
+	private static void downHeapify(int index) {
+		if (index >= minHeap.size()) {
+			return;
+		}
+		int currentIndex = index;
+		int leftIndex = (2 * currentIndex) + 1;
+		int rightIndex = (2 * currentIndex) + 2;
+		Integer currentEle = minHeap.get(currentIndex);
+		if (leftIndex < minHeap.size() && minHeap.get(leftIndex) < minHeap.get(currentIndex)) {
+			Integer leftEle = minHeap.get(leftIndex);
+			minHeap.set(currentIndex, leftEle);
+			minHeap.set(leftIndex, currentEle);
+			downHeapify(leftIndex);
+		}
+		currentEle = minHeap.get(currentIndex);
+		if (rightIndex < minHeap.size() && minHeap.get(rightIndex) < minHeap.get(currentIndex)) {
+			Integer rightEle = minHeap.get(rightIndex);
+			minHeap.set(currentIndex, rightEle);
+			minHeap.set(rightIndex, currentEle);
+			downHeapify(rightIndex);
+
 		}
 	}
 }
