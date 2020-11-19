@@ -15,7 +15,6 @@ public class DisjointSetUnionByPathCompression {
 		union(find(a[9]), find(a[4]));
 		union(find(a[6]), find(a[9]));
 
-		
 		System.out.println(find(a[0]).ele);
 		System.out.println(find(a[1]).ele);
 		System.out.println(find(a[3]).ele);
@@ -27,7 +26,6 @@ public class DisjointSetUnionByPathCompression {
 		System.out.println(find(a[4]).ele);
 		System.out.println(find(a[6]).ele);
 		System.out.println(find(a[9]).ele);
-		
 
 		System.out.println(find(a[7]).ele);
 	}
@@ -44,10 +42,10 @@ public class DisjointSetUnionByPathCompression {
 	public static void union(DisjointSet set1, DisjointSet set2) {
 		if (set1.nodes > set2.nodes) {
 			set2.parent = set1;
-			set1.nodes += 1;
+			set1.nodes += set2.nodes;
 		} else {
 			set1.parent = set2;
-			set2.nodes += 1;
+			set2.nodes += set1.nodes;
 		}
 	}
 }
