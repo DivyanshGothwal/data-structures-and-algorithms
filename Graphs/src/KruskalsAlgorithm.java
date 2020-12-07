@@ -27,7 +27,7 @@ public class KruskalsAlgorithm {
 		addUndirectedEdge(graph, 1, 3, 4);
 		addUndirectedEdge(graph, 1, 4, 2);
 		List<Edge> edgesInMST = findMST(graph);
-		System.out.println(edgesInMST);
+		edgesInMST.stream().forEach(e -> System.out.println(e.u + " to: " + e.v));
 	}
 
 	public static List<Edge> findMST(List<List<Edge>> graph) {
